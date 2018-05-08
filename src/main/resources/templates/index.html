@@ -1,8 +1,31 @@
+{{!
 <!doctype html>
 <html lang="en">
-  <body>
-    <h1>Demo</h1>
-    <div>Hello World</div>
-  </body>
-</html>
-
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Faux</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+</head>
+<script type="text/javascript">
+    fetch("/api/teachers_list")
+        .then(response => response.json())
+        .then(visits => {
+            visits.forEach(visit => {
+                const el = document.createElement('li');
+                el.innerText = visit.description;
+                document.querySelector('#visits').append(el);
+            });
+        });
+</script>
+<body>}}
+{{#layout}}{{#menu}}home{{/menu}}
+	<h1>Demo</h1>
+	<div class="container">Hello World</div>
+	<ul id="visits"></ul>
+{{/layout}}
+{{!</body></html>}}

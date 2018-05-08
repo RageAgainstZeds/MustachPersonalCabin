@@ -12,5 +12,4 @@ import org.springframework.stereotype.Repository;
 public interface TeachersRepository extends CrudRepository<Teachers, Integer>{
 	@Query("from Teachers where course like %:course%")
 	public List<Teachers> search(@Param("course") String course);
-	
 }
