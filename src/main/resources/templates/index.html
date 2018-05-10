@@ -1,6 +1,37 @@
 {{!
 <!doctype html>
 <html lang="en">
+<!-- <script type="text/javascript">
+    fetch("/api/teachers_list")
+        .then(response => response.json())
+        .then(teachers_list => {
+        	teachers_list.forEach(teachers => {
+                const el = document.createElement('li');
+                el.innerText = teachers.name;
+                document.querySelector('#teachers_list').append(el);
+            });
+        });
+</script> -->
+<script type="text/javascript">
+var myList = document.querySelector('ul');
+
+var myRequest = new Request("/api/teachers_list");
+
+fetch(myRequest)
+  .then(function(response) { return response.json(); })
+  .then(function(data) {
+    for (var i = 0; i < data.teachers_list.length; i++) {
+      var listItem = document.createElement('li');
+      listItem.innerHTML = '<strong>' + data[i].name + '</strong> can be found in ' +
+                           data.id +
+                           '. Cost: <strong>£' + data.surname + '</strong>';
+      blaItem.innerHTML = "blabla";
+      myList.appendChild(blaItem);
+      myList.appendChild(listItem);
+    }
+  });
+</script>
+
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,21 +42,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 </head>
-<script type="text/javascript">
-    fetch("/api/teachers_list")
-        .then(response => response.json())
-        .then(visits => {
-            visits.forEach(visit => {
-                const el = document.createElement('li');
-                el.innerText = visit.description;
-                document.querySelector('#visits').append(el);
-            });
-        });
-</script>
+
 <body>}}
 {{#layout}}{{#menu}}home{{/menu}}
 	<h1>Demo</h1>
+	<ul>
+	</ul>
 	<div class="container">Hello World</div>
-	<ul id="visits"></ul>
+	<!-- <ul id="teachers_list"></ul> -->
 {{/layout}}
 {{!</body></html>}}
