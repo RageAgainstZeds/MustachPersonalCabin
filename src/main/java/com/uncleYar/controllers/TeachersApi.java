@@ -15,8 +15,8 @@ public class TeachersApi {
 @Autowired
 TeachersRepository teachersRepo;
 
-@GetMapping("/teachers_list")
-    public Iterable<Teachers> getTreacherList() {
+@GetMapping("/teachers")
+    public Iterable<Teachers> getTreachers() {
         return teachersRepo.findAll();
     }
 
