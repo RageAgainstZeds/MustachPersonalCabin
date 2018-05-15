@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<script type="text/javascript">
+    fetch("/api/teachers")
+        .then(response => response.json())
+        .then(teachers => {
+        	teachers.forEach(teacher => {
+                const el = document.createElement('div');
+                el.innerText = teacher.id;
+                document.querySelector('#teachers').append(el);
+            });
+        });
+</script>
+
+<script type="text/javascript">
+var myJSON = '{"id":1,"name":"Jim","surname":"Henrix","course":"Blues"}';
+var myObj = JSON.parse(myJSON);
+document.getElementById("demo").innerHTML = myObj.name;
+</script>
+
+<body>
+
+<div>Hi! We have {{teachersCount}} teachers in our school.</div>
+
+<ul id="teachers">
+</ul>
+<p id="demo"></p>
+
+</body>
+
+</html>
