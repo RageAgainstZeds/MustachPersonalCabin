@@ -2,27 +2,19 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
-
 <!-- <script type="text/javascript">
-var myList = document.querySelector('ul');
-
-var myRequest = new Request("/api/teachers_list");
-
-fetch(myRequest)
-  .then(function(response) { return response.json(); })
-  .then(function(data) {
-    for (var i = 0; i < data.teachers_list.length; i++) {
-      var listItem = document.createElement('li');
-      listItem.innerHTML = '<strong>' + data[i].name + '</strong> can be found in ' +
-                           data.id +
-                           '. Cost: <strong>£' + data.surname + '</strong>';
-      blaItem.innerHTML = "blabla";
-      myList.appendChild(blaItem);
-      myList.appendChild(listItem);
-    }
-  });
+    fetch("/api/teachers")
+        .then(response => response.json())
+        .then(teachers => {
+        	teachers.forEach(teacher => {
+                const el = document.createElement('li');
+                el.innerText = teacher.id;
+                document.querySelector('#teachers').append(el);
+            });
+        });
 </script> -->
+
+
 
 <head>
 <meta charset="utf-8" />
@@ -39,19 +31,19 @@ fetch(myRequest)
 	<h1>Demo</h1>
 	<div class="container">Hello World</div>
 	<div>Hi! We have {{teachersCount}} teachers in our school.</div>
-		<script type="text/javascript">
-    fetch("/api/teachers")
-        .then(response => response.json())
-        .then(teachers => {
-        	teachers.forEach(teacher => {
-                const el = document.createElement('li');
-                el.innerText = teacher.id;
-                document.querySelector('#teachers').append(el);
-            });
-        });
-</script>
+		
 	<ul id="teachers">
 	<li>gooooo</li>
 	</ul>
+	
+	<script type="text/javascript">
+var myRequest = new Request("/api/teachers_list");
+var JsonObj = JSON.parse(myRequest);
+for (var i = 0; JsonObj.length; i++) {
+	const el = document.createElement('li');
+    el.innerText = JsonObj[i].id + JsonObj[i].name + JsonObj[i].surname + JsonObj[i].course;
+    document.querySelector('#teachers').append(el);
+};
+</script>
 {{/layout}}
 {{!</body></html>}}
